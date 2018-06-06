@@ -18,7 +18,8 @@ public class Main
     public String getText(@PathParam("table") String table, @PathParam("currency") String currency,
 	    @PathParam("topCount") Integer topCount)
     {
-	return AverageRateCalculator.average(table, currency, topCount);
+	return "Average exchange rate for " + currency + " from table " + table + " for the last " + topCount
+		+ " days is: " + AverageRateCalculator.average(table, currency, topCount) + " PLN";
     }
 
     @GET
@@ -27,9 +28,9 @@ public class Main
     public String getHtml(@PathParam("table") String table, @PathParam("currency") String currency,
 	    @PathParam("topCount") Integer topCount)
     {
-	return "<html><body><h1>Average rate</h1><p>Average exchange rate for " + currency + " from table " + table
-		+ " for the last " + topCount + " days is: " + AverageRateCalculator.average(table, currency, topCount)
-		+ " PLN</p></body></html>";
+	return "<html><body><p>Average exchange rate for " + currency + " from table "
+		+ table + " for the last " + topCount + " days is: "
+		+ AverageRateCalculator.average(table, currency, topCount) + " PLN</p></body></html>";
     }
 
     @GET
